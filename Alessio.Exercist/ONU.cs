@@ -8,13 +8,11 @@ namespace Alessio.Exercist
 {
     public class ONU : Organizzazione
     {
-        private int _nCaschi_blu;
-        private int _nAiuti_schierati;
-
-        public ONU(Paese paese)
-        {
-            Console.WriteLine("paese aggiunto all ONU: {0}", paese.Nome);
-        }
+        //var
+        private int     _nCaschi_blu;
+        private int     _nAiuti_schierati;
+      
+        //property
         public int N_Caschi_Blu
         {
             get { return _nCaschi_blu; }
@@ -23,7 +21,6 @@ namespace Alessio.Exercist
                 _nCaschi_blu = value;
             }
         }
-
         public int N_Aiuti_schierati
         {
             get { return _nAiuti_schierati; }
@@ -31,6 +28,12 @@ namespace Alessio.Exercist
             {
                 _nAiuti_schierati = value;
             }
+        }
+        //costruttore
+        public ONU(Paese paese)
+        {
+            Paese = paese;
+            Console.WriteLine("paese ha fatto richiesta alla ONU: {0}",Paese.Nome);
         }
 
         public void AiutiUmanitari()

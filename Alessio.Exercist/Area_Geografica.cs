@@ -26,7 +26,6 @@ namespace Alessio.Exercist
                 _clima = value;
             }
         }
-
         public decimal Popolazione
         {
             get { return _popolazione; }
@@ -35,7 +34,6 @@ namespace Alessio.Exercist
                 _popolazione = value;
             }
         }
-
         public string Nome
         {
             get { return _nome; }
@@ -44,7 +42,6 @@ namespace Alessio.Exercist
                 _nome = value;
             }
         }
-
         public string Etnia
         {
             get { return _etnia; }
@@ -55,18 +52,14 @@ namespace Alessio.Exercist
         }
 
         //costruttore
-
-
         public void Definisci_confini()
         {
 
         }
-
         public void gestione_fondi()
         {
 
         }
-
         public string PrintListFauna()
         {
             return _listaFauna[0];

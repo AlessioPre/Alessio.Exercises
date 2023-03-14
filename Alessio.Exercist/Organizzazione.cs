@@ -9,14 +9,14 @@ namespace Alessio.Exercist
     public class Organizzazione
     {
         //var
-        private string _nome;
-        private string _sede;
-        private string _presidente;
-        private string _regolamento;
-        private int _nDipendenti;
-
+        private string  _nome;
+        private string  _sede;
+        private string  _presidente;
+        private string  _regolamento;
+        private int     _nDipendenti;
+        private Paese   _paese; 
         //property
-        public string Nome
+        public string   Nome
         {
             get { return _nome; }
             set
@@ -24,7 +24,7 @@ namespace Alessio.Exercist
                 _nome = value;
             }
         }
-        public string Sede
+        public string   Sede
         {
             get { return _sede; }
             set
@@ -32,7 +32,7 @@ namespace Alessio.Exercist
                 _sede = value;
             }
         }
-        public string Presidente
+        public string   Presidente
         {
             get { return _presidente; }
             set
@@ -40,7 +40,7 @@ namespace Alessio.Exercist
                 _presidente = value;
             }
         }
-        public string Regolamento
+        public string   Regolamento
         {
             get { return _regolamento; }
             set
@@ -48,7 +48,7 @@ namespace Alessio.Exercist
                 _regolamento = value;
             }
         }
-        public int N_Dipendenti
+        public int      N_Dipendenti
         {
             get { return _nDipendenti; }
             set
@@ -56,27 +56,27 @@ namespace Alessio.Exercist
                 _nDipendenti = value;
             }
         }
+        public Paese Paese { get { return _paese; } set { _paese = value; } }
 
-        public void AggiungiStato()
+        //Metodi
+        public void AggiungiStato(Paese paese)
         {
-
+            Paese = paese;
+            Console.WriteLine( "il paese è stato aggiunto {0}",Paese.Nome);
         }
 
         public void InvocaLegge()
         {
 
         }
-
         public void Sanziona()
         {
 
         }
-
         public void GestisciCrisi()
         {
 
         }
-
         public void RimuoviPaese()
         {
 

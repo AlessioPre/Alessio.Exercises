@@ -8,17 +8,17 @@ namespace Alessio.Exercist
 {
     public class Comune : Area_Geografica
     {
-        private string _municipio;
-        private int _cap;
-        private Provincia _provincia;
+        private string      _municipio;
+        private int         _cap;
+        private Provincia   _provincia;
+        private Abitanti    _abitanti;
         public Comune(Provincia provincia, string name)
         {
             this.Nome = name;
             this._provincia = provincia;
-            Console.WriteLine("il comune {0} fa parte della provincia: {1}", this.Nome, _provincia.Nome);
+            Console.WriteLine("il comune  è stato creato {0} ", this.Nome);
         }
-
-        public int CAP
+        public int      CAP
         {
             get { return _cap; }
             set
@@ -26,8 +26,7 @@ namespace Alessio.Exercist
                 _cap = value;
             }
         }
-
-        public string Municipio
+        public string   Municipio
         {
             get { return _municipio; }
             set
@@ -35,15 +34,20 @@ namespace Alessio.Exercist
                 _municipio = value;
             }
         }
-
+        //Metodi
         public void EmettiSanzione()
         {
 
         }
-
         public void AddCittadino(Abitanti abitanti)
         {
-
+            _abitanti = abitanti;
+            Console.WriteLine("Cittadino aggiunto {0}",_abitanti.Nome ) ;
+        }
+        public void ChangeProvincia(Provincia provincia)
+        {
+            _provincia = provincia;
+            Console.WriteLine("Provincia cambiata{0}", _provincia.Nome);
         }
     }
 }

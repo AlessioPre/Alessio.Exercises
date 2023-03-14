@@ -17,10 +17,9 @@ namespace Alessio.Exercist
 
         public Abitanti(Comune comune, string nome)
         {
-            Nome = nome;
-            this._comune = comune;
-            comune.AddCittadino(this);
-            Console.WriteLine("l'abitante: {0} fa parte del comune: {1}", this.Nome, _comune.Nome);
+            Nome            = nome;
+            this._comune    = comune;
+            Console.WriteLine("l'abitante{0} è stato creato", this.Nome);
         }
 
         public string CodiceFiscale
@@ -31,7 +30,6 @@ namespace Alessio.Exercist
                 _codice_fiscale = value;
             }
         }
-
         public string Nome
         {
             get { return _nome; }
@@ -40,7 +38,6 @@ namespace Alessio.Exercist
                 _nome = value;
             }
         }
-
         public string Cognome
         {
             get { return _cognome; }
@@ -49,7 +46,6 @@ namespace Alessio.Exercist
                 _cognome = value;
             }
         }
-
         public string Luogo_di_Nascita
         {
             get { return _luogo_di_nascita; }
@@ -58,7 +54,6 @@ namespace Alessio.Exercist
                 _luogo_di_nascita = value;
             }
         }
-
         public string Data_di_Nascita
         {
             get { return _data_di_nascita; }
@@ -68,9 +63,16 @@ namespace Alessio.Exercist
             }
         }
 
+        //Metodi
         public void Vota()
         {
 
+        }
+
+        public void ChangeComune( Comune comune)
+        {
+            _comune = comune;
+            Console.WriteLine("Comune cambiato");
         }
     }
 }

@@ -8,13 +8,9 @@ namespace Alessio.Exercist
 {
     public class NATO : Organizzazione
     {
-        private int _nPaesi_aderenti;
-
-        public NATO(Paese paese)
-        {
-            Console.WriteLine("paese aggiunto alla Nato: {0}", paese.Nome);
-        }
-
+        //var
+        private int     _nPaesi_aderenti;
+        private Paese   _paese;
         public int Paesi_Aderenti
         {
             get { return _nPaesi_aderenti; }
@@ -23,15 +19,24 @@ namespace Alessio.Exercist
                 _nPaesi_aderenti = value;
             }
         }
+        //costruttore
+        public NATO(Paese paese)
+        {
+            _paese = paese;
+            Console.WriteLine("paese ha fatto richiesta alla Nato: {0}", _paese.Nome);
+        }
 
+        //metodi
         public void StuzicaRussia()
         {
 
         }
-
         public void OrganizzaIncontro()
         {
 
         }
+
+       
+
     }
 }
