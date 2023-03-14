@@ -34,6 +34,7 @@ namespace Alessio.Exercist
         {
             Paese = paese;
             Console.WriteLine("paese ha fatto richiesta alla ONU: {0}",Paese.Nome);
+            //this.AggiungiStato(Paese);
         }
 
         public void AiutiUmanitari()

@@ -10,7 +10,7 @@ namespace Alessio.Exercist
     {
         //var
         private int     _nPaesi_aderenti;
-        private Paese   _paese;
+        
         public int Paesi_Aderenti
         {
             get { return _nPaesi_aderenti; }
@@ -22,8 +22,9 @@ namespace Alessio.Exercist
         //costruttore
         public NATO(Paese paese)
         {
-            _paese = paese;
-            Console.WriteLine("paese ha fatto richiesta alla Nato: {0}", _paese.Nome);
+            Paese= paese;
+            Console.WriteLine("paese ha fatto richiesta alla Nato: {0}", Paese.Nome);
+            //this.AggiungiStato(paese);
         }
 
         //metodi

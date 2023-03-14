@@ -17,6 +17,7 @@ namespace Alessio.Exercist
             this.Nome = name;
             this._provincia = provincia;
             Console.WriteLine("il comune  è stato creato {0} ", this.Nome);
+            _provincia.AddComune(this);
         }
         public int      CAP
         {

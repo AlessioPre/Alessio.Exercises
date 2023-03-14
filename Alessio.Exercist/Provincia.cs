@@ -36,6 +36,7 @@ namespace Alessio.Exercist
             this.Nome = name;
             _regione = regione;
             Console.WriteLine("la provincia {0} è stata creata ", this.Nome);
+            _regione.AddProvincia(this);
         }
         public void GestioneEventiProvinciali()
         {

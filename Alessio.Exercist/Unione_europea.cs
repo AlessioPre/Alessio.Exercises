@@ -14,9 +14,9 @@ namespace Alessio.Exercist
 
         public Unione_europea(Paese paese)
         {
-            Paese= paese;
+            Paese = paese;
             Console.WriteLine("paese ha fatto richiesta al UE: {0}", Paese.Nome);
-
+            //this.AggiungiStato(paese);
         }
 
         public string Moneta

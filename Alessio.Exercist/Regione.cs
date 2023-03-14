@@ -45,6 +45,7 @@ namespace Alessio.Exercist
             _paese      = paese;
             this.Nome   = nome;
             Console.WriteLine("la regione {0} è stata creata ", this.Nome);
+            _paese.AddRegione(this);
         }
 
         public void IstanziaConcorsiRegionali()

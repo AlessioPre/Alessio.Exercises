@@ -20,6 +20,8 @@ namespace Alessio.Exercist
             Nome            = nome;
             this._comune    = comune;
             Console.WriteLine("l'abitante{0} è stato creato", this.Nome);
+            _comune.AddCittadino(this);
+
         }
 
         public string CodiceFiscale
