@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Alessio.Exercist
 {
-    public class Provincia : Area_Geografica
+     class Provincia : Area_Geografica
     {
         //var
         private string  _assessore_provinciale;

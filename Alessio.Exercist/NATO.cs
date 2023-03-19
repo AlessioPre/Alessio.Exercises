@@ -20,11 +20,11 @@ namespace Alessio.Exercist
             }
         }
         //costruttore
-        public NATO(Paese paese)
+        public NATO()
         {
-            Paese= paese;
-            Console.WriteLine("paese ha fatto richiesta alla Nato: {0}", Paese.Nome);
-            //this.AggiungiStato(paese);
+            //Paese= paese;
+            //Console.WriteLine("paese ha fatto richiesta alla Nato: {0}", Paese.Nome);
+            ////this.AggiungiStato(paese);
         }
 
         //metodi

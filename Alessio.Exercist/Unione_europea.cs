@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Alessio.Exercist
 {
-    public class Unione_europea : Organizzazione
+     class Unione_europea : Organizzazione
     {
         private string  _moneta;
-      
+        Paese _paese;
         private List<Paese>     _paesi_partecipanti;
 
         public Unione_europea(Paese paese)
         {
-            Paese = paese;
-            Console.WriteLine("paese ha fatto richiesta al UE: {0}", Paese.Nome);
+            _paese = paese;
+            Console.WriteLine("paese ha fatto richiesta al UE: {0}", _paese.Nome);
             //this.AggiungiStato(paese);
         }
 

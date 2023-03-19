@@ -56,13 +56,13 @@ namespace Alessio.Exercist
                 _nDipendenti = value;
             }
         }
-        public Paese Paese { get { return _paese; } set { _paese = value; } }
+      //  public Paese Paese { get { return _paese; } set { _paese = value; } }
 
         //Metodi
-        public void AggiungiStato(Paese paese)
+        public void AggiungiStato(Area_Geografica paese)
         {
-            Paese = paese;
-            Console.WriteLine( "il paese è stato aggiunto {0}",Paese.Nome);
+            _paese = (Paese)paese;
+            Console.WriteLine( "il paese è stato aggiunto {0}",_paese.Nome);
         }
 
         public void InvocaLegge()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Alessio.Exercist
 {
-    public class Comune : Area_Geografica
+     class Comune : Area_Geografica
     {
         private string      _municipio;
         private int         _cap;

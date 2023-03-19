@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Alessio.Exercist
 {
-    public class Abitanti
+     class Abitanti
     {
         private string _nome;
         private string _cognome;

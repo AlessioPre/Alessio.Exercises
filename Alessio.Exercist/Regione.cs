@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Alessio.Exercist
 {
-    public class Regione : Area_Geografica
+     class Regione : Area_Geografica
     {
         //var
         private string  _capoluogo;
