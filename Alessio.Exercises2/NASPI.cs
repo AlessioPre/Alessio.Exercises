@@ -15,7 +15,7 @@ namespace Alessio.Exercises2
             {
                 Disoccupato disoccupato = (Disoccupato)persona;
 
-                if (disoccupato.AssengnoRicevuto || (2023 - disoccupato.AnnoUltimoLavoro) <= 1)
+                if (disoccupato.BonusRicevuto || (2023 - disoccupato.AnnoUltimoLavoro) > 1)
                 {
                     Console.WriteLine("Assegno già ricevuto");
                 }
@@ -53,6 +53,10 @@ namespace Alessio.Exercises2
                     {
                         this.InviaBonus(disoccupato);
                     }
+                    else
+                    {
+                        Console.WriteLine( "non hai diritto al naspi");
+                    }
                 }
             }
             catch (Exception ex) { Console.WriteLine("Errore"); }
@@ -61,7 +65,7 @@ namespace Alessio.Exercises2
         private void InviaBonus(Disoccupato disoccupato)
         {
             disoccupato.Bonus = 1000; 
-            disoccupato.AssengnoRicevuto = true;
+            disoccupato.BonusRicevuto = true;
         }
     }
 }

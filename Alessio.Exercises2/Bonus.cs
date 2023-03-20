@@ -18,31 +18,25 @@ namespace Alessio.Exercises2
 
         public override void CalcolaBonus(Persona persona)
         {
-            try
-            {
-                Persona nonLavoratore = (Disoccupato)persona;
-
-                if (true)
-                {
-
-                }
-                if (persona.Maturita >= 90)
+            Lavoratore _persona =(Lavoratore)persona;
+         
+                if (_persona.Maturita >= 90)
                 {
                     Punteggio += 7;
                 }
-                if (persona.Age >= 18 && persona.Age <= 28)
+                if (_persona.Age >= 18 && _persona.Age <= 28)
                 {
                     Punteggio += 6;
                 }
-                if (persona.Universita >= 28)
+                if (_persona.Universita >= 28)
                 {
                     Punteggio += 6;
                 }
-                if (!persona.FedinaPenale)
+                if (!_persona.FedinaPenale)
                 {
                     Punteggio += 4;
                 }
-                switch (persona.Figli)
+                switch (_persona.Figli)
                 {
                     case 1:
                         Punteggio += 2;
@@ -66,28 +60,30 @@ namespace Alessio.Exercises2
                         Punteggio += 0;
                         break;
                 }
-                if (persona.Militare)
+                if (_persona.Militare)
                 {
                     Punteggio += 4;
                 }
-                if (persona.Debiti)
+                if (!(_persona.Debiti))
                 {
                     Punteggio += 8;
                 }
-                if (persona.PilComune < 1000000M)
+                if (_persona.PilComune < 1000000M)
                 {
                     Punteggio += 8;
                 }
 
-                if (Punteggio >= indeceBonus && persona.IsAdult)
+                  if (Punteggio >= indeceBonus && _persona.IsAdult)
                 {
-                    persona.Bonus += 1000;
+                Console.WriteLine("Premio raggiunto");
+                _persona.Bonus += 1000;
+                _persona.BonusRicevuto = true;
                 }
                 else
                 {
-                    persona.Bonus = 0;
+                    _persona.Bonus = 0;
                 }
-            }
+            
         }
     }
 }

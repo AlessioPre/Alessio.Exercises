@@ -6,18 +6,19 @@ namespace Alessio.Exercises2
     {
         static void Main(string[] args)
         {
-            Persona paolo = new Persona("Paolo", "Fumagalli", 26, 97, 24, false, 14, false, false, 12300000M);
+            Persona paolo = new Lavoratore("Paolo", "Fumagalli",26,91,true,1000000M,4,28,false,false,200000,"part-time");
             Persona gianluca = new Disoccupato("Gianluca", "Rossi", 33, 89, 26, false, 0, false, false, 30000000M, "Indeterminato", "Part-time", 22,2022);
 
             AssegnoSociale naspi = new NASPI();
             AssegnoSociale bonus = new Bonus();
 
-            //naspi.CalcolaBonus(paolo);
             bonus.CalcolaBonus(paolo);
-            naspi.CalcolaBonus(gianluca);
-
             paolo.GetValues();
+            //naspi.CalcolaBonus(paolo);
+
+            naspi.CalcolaBonus(gianluca);
             gianluca.GetValues();
+
         }
     }
 }

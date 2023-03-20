@@ -23,8 +23,9 @@ namespace Alessio.Exercises2
         private bool    _debiti;
         private int     _punteggio;
         private int     _premio;
-        
+        bool            _bonusRicevuto = false;
 
+        public bool BonusRicevuto { get { return _bonusRicevuto; } set { _bonusRicevuto = value; } }
         public string   Name { get { return _name; } set { _name = value; } }
         public string   Surname { get { return _surname; } set { _surname = value; } }
         public string   FullName { get { return _name + " " + _surname; }  }
@@ -115,14 +116,13 @@ namespace Alessio.Exercises2
             }
         }
 
-        private void CalcolaBonus()
-        { }
-
         public virtual void GetValues()
         {
             Console.WriteLine($"Nome: {Name}");
             Console.WriteLine($"Cognome: {Surname}");
             Console.WriteLine($"Age: {this.Age}");
+
+           
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Alessio.Exercises2
 {
     internal class Disoccupato :Persona
     {
-        private bool    _assengnoRicevuto;
+        
         private bool    _disoccupato;
         private int     _annoUltimoLavoro;
         private int     _settimaneLavorate;
@@ -17,7 +17,6 @@ namespace Alessio.Exercises2
         public string   TipoDiContratto { get => _tipoDiContratto; set => _tipoDiContratto = value; }
         public string   TempoImpiego { get => _tempoImpiego; set => _tempoImpiego = value; }
         public int      SettimaneLavorate { get => _settimaneLavorate; set => _settimaneLavorate = value; }
-        internal bool   AssengnoRicevuto { get => _assengnoRicevuto; set => _assengnoRicevuto = value; }
         public int AnnoUltimoLavoro { get => _annoUltimoLavoro; set => _annoUltimoLavoro = value; }
         public bool     _Disoccupato { get => _disoccupato; set => _disoccupato = value; }
 
@@ -35,7 +34,7 @@ namespace Alessio.Exercises2
             Console.WriteLine($"Ha lavorato con contratto: {this.TempoImpiego}");
             Console.WriteLine($"Tipologia contratto: {this.TipoDiContratto}");
 
-            if (this.AssengnoRicevuto)
+            if (this.BonusRicevuto)
             {
                 Console.WriteLine($"assegno ricevuto: {this.Bonus}\n");
             }
