@@ -72,14 +72,11 @@ namespace Alessio.Exercises5
             string[] items = new string[] { "Bruno", "Marco", "Elena", "Fabio" };
             var result = Array.Find(items, i => i.Equals("Bruno"));
             Console.WriteLine(result);
-
         }
         public static void StartWithM()
         {
             string[] items = new string[] { "Bruno", "Marco", "Elena", "Mario" };
             var result = Array.FindAll(items, i => i.Length == 5); //LAMBDA FUCNTION 
-
-
         }
         public static void FindPosition()
         {
