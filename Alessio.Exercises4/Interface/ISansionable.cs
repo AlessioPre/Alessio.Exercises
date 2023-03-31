@@ -1,4 +1,4 @@
-﻿namespace Alessio.Exercises4
+﻿namespace Alessio.Exercises4.Interface
 {
     public interface ISansionable
     {

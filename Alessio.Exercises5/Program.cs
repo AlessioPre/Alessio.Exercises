@@ -50,8 +50,6 @@ namespace Alessio.Exercises5
             int[] numbers = new int[] { 1, 2, 3, 4, 5 };
             // iterare tutti gli elenmenti dell'array a patto che rispetti la dimensione max dell'array! 
 
-
-
             for (int i = 0; i <= numbers.Length - 1; i++)
             {
                 Console.WriteLine(numbers[i]);
@@ -116,7 +114,7 @@ namespace Alessio.Exercises5
                 _owners[counter] = Name;
                 counter++;
             }
-            else if   (counter >= _owners.Length) 
+            else 
             {
                 string[] items = new string[counter+1];
                 Array.Copy(_owners, items, _owners.Length);
@@ -128,7 +126,7 @@ namespace Alessio.Exercises5
         public void RemoveOwner(string Name)
         {
             Person[] items = new Person[] {
-                new Person() { Name = "Bruno" } ,
+                new Person() { Name = "Bruno" },
                 new Person() { Name = "Marco" },
                 new Person() { Name = "Elena" },
                 new Person() { Name = "Mario" },
@@ -141,8 +139,7 @@ namespace Alessio.Exercises5
             for (int i = 0; i < items.Length; i++)
             {
                 Console.WriteLine(items[i]);
-            }
-            
+            } 
         }
         public void ExpandCar(int length)
         {

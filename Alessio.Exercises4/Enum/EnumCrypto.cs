@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alessio.Exercises4
+namespace Alessio.Exercises4.Enum
 {
-    internal interface IRussia
+   public enum Crypto
     {
+        BTC,
+        ETH,
+        ADA,
+        BND,
     }
 }
