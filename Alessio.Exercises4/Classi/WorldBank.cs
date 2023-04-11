@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Alessio.Exercises4.Classi
 {
-    public class WorldBank
+    internal class WorldBank
     {
         public static bool Transfer(CommercialBank from, CommercialBank to, FiatTransferRequest data)
         {

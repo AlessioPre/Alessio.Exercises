@@ -7,7 +7,7 @@ using System.Text;
 namespace Alessio.Exercises4.Classi
 {
 
-    public class CentralBank : Bank
+    internal class CentralBank : Bank
     {
         #region Var
         const int _interestmax = 5; //%
