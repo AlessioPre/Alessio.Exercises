@@ -7,19 +7,13 @@ using System.Threading.Tasks;
 
 namespace Alessio.Exercises4
 {
-    internal class StockIntermediary : FinancialIntermediary
+    internal abstract class StockIntermediary : FinancialIntermediary
     {
-        string _name;
-        public StockIntermediary(string name)
-        {
-            _name = name.ToLower();
-        }
-
-        protected override Asset Buy(int amount, FinancialIntermediary interme,CultureInfo info)
+        protected override Asset Buy(string name ,int amount, FinancialIntermediary interme)
         {
             StockIntermediary stockMarket = (StockIntermediary)interme;
             StockMarket stockMarkets = (StockMarket)stockMarket;
-            return stockMarkets.Buy(amount, stockMarket,info);
+            return base.Buy(name,amount, stockMarket);
         }
     }
 }

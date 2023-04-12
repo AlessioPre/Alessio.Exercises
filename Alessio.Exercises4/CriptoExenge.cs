@@ -22,7 +22,7 @@ namespace Alessio.Exercises4
             public decimal CryptoAmount { get => _cryptoAmount; set => _cryptoAmount += this.ValueAsset; }
             public Crypto Type { get => _type; set => _type = value; }
 
-            public CRYPTO(Crypto type, decimal Amount, string name) : base(name, Amount)
+            public CRYPTO(Crypto type, decimal Amount) : base(type.ToString().ToLower())
             {
                 this.Type = type;
             }

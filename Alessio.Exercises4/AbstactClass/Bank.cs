@@ -11,16 +11,20 @@ namespace Alessio.Exercises4
 {
     internal abstract class Bank:FinancialIntermediary
     {
-        int    _id;
-        string _name;
-        string _country;
+        int         _id;
+        string      _name;
+        string      _country;
+        string      _city;
+        string      _street;
         CultureInfo _cultureInfo;
         public int Id { get { return _id; } set { _id = value; } }
         public string Name { get { return _name; } set { _name = value; } }
         public string Country { get { return _country; } set { _country = value; } }
+        public string City { get => _city; set => _city = value; }
+        public string Street { get => _street; set => _street = value; }
+        public CultureInfo CultureInfo { get => _cultureInfo; set => _cultureInfo = value; }
 
         public Bank() { }
-
         public Bank(string name,string country)
         {
             Name = name;
@@ -28,21 +32,32 @@ namespace Alessio.Exercises4
             SetCulture(country);
         }
 
+        public Bank(string name,string country,string city ,string street)
+        {
+            Name = name;
+            Country = country;
+            City = city;
+            Street = street;
+            SetCulture(country);
+            
+        }
+
+        //Assegna la classe culture info
         private void SetCulture(string country)
         {
             switch (country.ToLower())
             {
                 case "italia":
-                    _cultureInfo = new CultureInfo("it");
+                    CultureInfo = new CultureInfo("it");
                     break;
                 case "usa":
-                    _cultureInfo = new CultureInfo("en-US");
+                    CultureInfo = new CultureInfo("en-US");
                     break;
                 case "japan":
-                    _cultureInfo = new CultureInfo("jpn");
+                    CultureInfo = new CultureInfo("jpn");
                     break;
                 case "spagna":
-                    _cultureInfo= new CultureInfo("es-ES");
+                    CultureInfo= new CultureInfo("es-ES");
                     break;
 
             }
@@ -62,9 +77,9 @@ namespace Alessio.Exercises4
         //    base.Buy(value, marketname,info);
         //}
 
-        protected override Asset Buy(int amount, FinancialIntermediary type, CultureInfo cultureInfo)
+        protected override Asset Buy(string name ,int amount, FinancialIntermediary type)
         {
-            return base.Buy(amount, type, cultureInfo);
+            return base.Buy(name,amount, type);
         }
     }
 }

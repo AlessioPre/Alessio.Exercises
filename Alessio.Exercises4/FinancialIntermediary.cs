@@ -7,24 +7,21 @@ using System.Threading.Tasks;
 
 namespace Alessio.Exercises4
 {
-    internal class FinancialIntermediary
+    internal abstract class FinancialIntermediary
     {
-        private CultureInfo _cultureInfo;
-        protected virtual Asset Buy(int amount,FinancialIntermediary type,CultureInfo cultureInfo)
+        protected virtual Asset Buy(string name,int amount,FinancialIntermediary type)
         {
-            if (type._cultureInfo == cultureInfo)
-            {
+         
                 if (type is StockMarket)
                 {
                     StockIntermediary intermediary = (StockIntermediary)type;
-                    return intermediary.Buy(amount, intermediary,cultureInfo);
+                    return intermediary.Buy(name,amount, intermediary);
                 }
-                else
+                else if (type is CryptoIntermediaty)
                 {
                     CryptoIntermediaty intermediary = (CryptoIntermediaty)type;
-                    return intermediary.Buy(amount, intermediary, cultureInfo);
+                    return intermediary.Buy(name,amount, intermediary);
                 }
-            }
             Console.WriteLine("transazione impossibile");
             return null;
         }
@@ -37,11 +34,12 @@ namespace Alessio.Exercises4
             public decimal ValueAsset { get { return _valueAsset; } set { _valueAsset = value; } }
             public string Name { get { return _name; } set { _name = value; } }
 
-            public Asset(string name, decimal valueAsset)
+            public Asset(string name)
             {
                 Name = name;
-                ValueAsset = valueAsset;
+               
             }
+            public virtual void Deposit(decimal amount) { }
         }
     }
 }
