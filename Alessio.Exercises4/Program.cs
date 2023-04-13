@@ -62,11 +62,12 @@ namespace Alessio.Exercises4
             //Creo un nuovo stock nello stock market
             market.CreateStock(Stock.TESLA ,11000, 340M);
             //Compro stock asset
-            mediolanumBank.BuyStock(Stock.TESLA,Fiat.EURO,1000, IBAN);
+            mediolanumBank.BuyStock(Stock.TESLA,Fiat.EURO,1000,IBAN);
             //Aggiungo all'account un asset Stock di tipo euro con un valore di....
             //mediolanumBank.InvestInStock(10000, Stock.DINSNEY,"Disney", IBAN);
 
-            intesa.BuyStock(Stock.TESLA,Fiat.EURO,1, Iban3);
+            intesa.AddStockMarket(market);
+            intesa.BuyStock(Stock.TESLA,Fiat.EURO,10,Iban3);
             ///////////////////// Transfer
             /// trasferimento  impossibile
             mediolanumBank.Transfer(rucommercialBank, new FiatTransferRequest{_amount = 10,_accountfrom = IBAN , _accountTo = IBAN2 });

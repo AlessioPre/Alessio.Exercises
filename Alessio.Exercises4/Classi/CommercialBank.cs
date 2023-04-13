@@ -135,7 +135,7 @@ namespace Alessio.Exercises4.Classi
         public override bool Transfer(Bank to, FiatTransferRequest data)
         {
             //DownCasting il dato in ingresso
-           // CommercialBank commercialBank = (CommercialBank)to;
+           CommercialBank commercialBank = (CommercialBank)to;
             _account = Array.Find(Accounts, account => account.Iban == data._accountfrom);
             if (_account is null) return false;
 
@@ -146,8 +146,9 @@ namespace Alessio.Exercises4.Classi
                 ///
                 if (this.CheckTransfer(data._amount, _account))
                 {
-                    var account = Array.Find(Accounts, account => account.Id == data._accountfrom);
-                    if (account != null)
+                    var accountfrom = Array.Find(Accounts, account => account.Iban == data._accountfrom);
+                    var accountTo = Array.Find(commercialBank.Accounts, account => account.Iban == data._accountTo);
+                    if (accountfrom != null)
                     {
                         //int index = Array.IndexOf(Accounts, account);
 
@@ -155,15 +156,16 @@ namespace Alessio.Exercises4.Classi
                         Utility.GetAccountInfo(ConsoleColor.Red, this, false, data);
 
                         //transferTo.account.DepositFIAT(data._amount);
-                        Utility.GetAccountInfo(ConsoleColor.Green,(CommercialBank)to, true, data);
+                        Utility.GetAccountInfo(ConsoleColor.Green,commercialBank, true, data);
 
                         //Console.BackgroundColor = ConsoleColor.Green;
                         //Console.ForegroundColor = ConsoleColor.Black;
                         Console.WriteLine($"The  amount {data._amount} from the account {data._accountfrom} from the Bank {this.Name} to " +
                             $"account {data._accountTo} of from the Bank {to.Name} has been made! ");
-                        Console.ResetColor();
+                        //Console.ResetColor();
 
-                        FileLog.WriteFile(FileLog.Dir, FileLog.Filename+account.ClientAccount.Name+FileLog.Format, DateTime.Now, this.Name, Account, data._amount);
+                        FileLog.WriteFile(FileLog.Dir, FileLog.Filename+accountfrom.ClientAccount.Name+FileLog.Format, DateTime.Now, this.Name, Account, data._amount,false);
+                        FileLog.WriteFile(FileLog.Dir, FileLog.Filename+accountTo.ClientAccount.Name + FileLog.Format, DateTime.Now, commercialBank.Name, Account, data._amount, true);
                         return true;
                     }
                 }
@@ -230,7 +232,7 @@ namespace Alessio.Exercises4.Classi
         public void DepositCrypto(decimal Amount, long accountID, Crypto type)
         {
             var result = Array.Find(Accounts, i => i.Id == accountID);
-            // Check Client // è biondo!
+         
             if (result != null)
             {
                 var index = Array.IndexOf(this.Accounts, result);
@@ -240,7 +242,7 @@ namespace Alessio.Exercises4.Classi
         public void WithdrawCrypto(decimal Amount, string kindOfValue, long accountID)
         {
             var result = Array.Find(Accounts, i => i.Id == accountID);
-            // Check Client // è biondo!
+        
             if (result != null)
             {
                 var index = Array.IndexOf(this.Accounts, result);
@@ -284,18 +286,18 @@ namespace Alessio.Exercises4.Classi
 
             if ((_account.WithdrawFIAT(amount, fiattype)))// controllo se è possibile ritirare
             {
-                var asset = base.Buy(fiattype.ToString().ToLower(), amount,_stockMarket);
+                var asset = base.Buy(stocktype, amount,_stockMarket);
                 if (asset != null)
                 {
                     Account.AddStock(asset);
-                    FileLog.WriteFile(FileLog.Dir, FileLog.Filename+_account.ClientAccount.Name+FileLog.Format,DateTime.Now,this.Name,_account,amount);
+                    FileLog.WriteFile(FileLog.Dir, FileLog.Filename+_account.ClientAccount.Name+FileLog.Format,DateTime.Now,this.Name,_account,amount,false);
                     return;
                 }
-                FileLog.WriteFile(FileLog.Dir, FileLog.Filename + _account.ClientAccount.Name + FileLog.Format, DateTime.Now, this.Name, _account, amount);
+               // FileLog.WriteFile(FileLog.Dir, FileLog.Filename + _account.ClientAccount.Name + FileLog.Format, DateTime.Now, this.Name, _account, amount);
             }
             else
             {
-                FileLog.WriteFile(FileLog.Dir, FileLog.Filename + _account.ClientAccount.Name + FileLog.Format, DateTime.Now, this.Name, _account, amount);
+               // FileLog.WriteFile(FileLog.Dir, FileLog.Filename + _account.ClientAccount.Name + FileLog.Format, DateTime.Now, this.Name, _account, amount);
             }
         }
         #endregion
@@ -317,7 +319,7 @@ namespace Alessio.Exercises4.Classi
         {
             cEntralBank = centralBank;
         }
-        protected override Asset Buy(string name ,int amount, FinancialIntermediary type)
+        protected override Asset Buy(Stock name ,int amount, FinancialIntermediary type)
         {
             return base.Buy(name,amount, type);
         }
@@ -435,7 +437,7 @@ namespace Alessio.Exercises4.Classi
                 Asset asset = Array.Find(Assets, asset => asset.Name == fiatName);
                 if (asset is null) return;
 
-                asset.Deposit(fiatAmount);
+                asset.Deposit(fiatAmount,this);
             }
             //public void DepositFIAT(decimal Amount, Fiat type, string kindof)
             //{
@@ -457,19 +459,6 @@ namespace Alessio.Exercises4.Classi
                 { if (CheckWithDraw(Amount,asset)) return true; }
                 return false;
             }
-            internal void AddFiat(string fiatType)
-            {
-                throw new NotImplementedException();
-            }
-            internal void RemoveFiat(string v)
-            {
-                throw new NotImplementedException();
-            }
-            internal void TransfertAssetFiat()
-            {
-
-            }
-
             #endregion
             #region CryptoMethod
             public void DepositCrypto(decimal Amount, Crypto type)
@@ -643,6 +632,11 @@ namespace Alessio.Exercises4.Classi
                     if (dailyTot > _daylyDrawMax) IsDailyExeed = true;
                 }
             }
+
+            internal void RemoveFiat(string v)
+            {
+                throw new NotImplementedException();
+            }
             #endregion
             ///////////////////////////CLIENT\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             public class Client :Person
@@ -724,10 +718,15 @@ namespace Alessio.Exercises4.Classi
                
             }
 
-            public override void Deposit(decimal amount)
+            //public override void Deposit(decimal amount)
+            //{
+            //    FiatAmount += amount;
+            //    Console.WriteLine($"Sono stati depositati {amount} euro. Saldo contabile: {FiatAmount}, dal conto di {account.ClientAccount.Name} ,della banca{ account.CommercialBank.Name}");
+            //}
+            public override void Deposit(decimal amount, BankAccount account)
             {
                 FiatAmount += amount;
-                Console.WriteLine($"Sono stati depositati {amount} euro. Saldo contabile: {FiatAmount}");
+                Console.WriteLine($"Sono stati depositati {amount} euro. Saldo contabile: {FiatAmount}, dal conto di {account.ClientAccount.Name} ,della banca{account.CommercialBank.Name}");
             }
         }
     }

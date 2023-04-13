@@ -77,7 +77,7 @@ namespace Alessio.Exercises4
         //    base.Buy(value, marketname,info);
         //}
 
-        protected override Asset Buy(string name ,int amount, FinancialIntermediary type)
+        protected override Asset Buy(Stock name ,int amount, FinancialIntermediary type)
         {
             return base.Buy(name,amount, type);
         }

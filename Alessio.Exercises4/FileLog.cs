@@ -19,7 +19,7 @@ namespace Alessio.Exercises4
         public static string Filename { get => _filename; set => _filename = value; }
         public static string Format { get => _format; set => _format = value; }
 
-        public static void WriteFile(string path, string FileName,DateTime dateTime, string bankname,BankAccount account,decimal operation)
+        public static void WriteFile(string path, string FileName,DateTime dateTime, string bankname,BankAccount account,decimal operation,bool isDeposit)
         {
             StringBuilder sb = new StringBuilder();
             string FilePath = Path.Combine(path, FileName);
@@ -31,12 +31,31 @@ namespace Alessio.Exercises4
             {
                 string heater = string.Format("Movimenti del conto di {0} {1} della banca {2}", account.ClientAccount.Name, account.ClientAccount.ClientId, account.CommercialBank.Name);
                 sb.AppendLine(heater);
-               
+                if (isDeposit)
+                {
+                string body = string.Format("Data : {0} Deposito : {1} saldo Attuale {2}", dateTime, operation, account.AssetFiat.FiatAmount += operation);
+                sb.AppendLine(body);
+
+                }
+                else
+                {
+                    string body = string.Format("Data : {0} Prelievo : {1} saldo Attuale {2}", dateTime, operation, account.AssetFiat.FiatAmount -= operation);
+                    sb.AppendLine(body);
+                }
             }
             else
             {
-                string body = string.Format("Data : {0} Movimento : {1} saldo Attuale {2}",dateTime,operation,account.AssetFiat.FiatAmount += operation);
-                sb.AppendLine(body);
+                if (isDeposit)
+                {
+                    string body = string.Format("Data : {0} Deposito : {1} saldo Attuale {2}", dateTime, operation, account.AssetFiat.FiatAmount += operation);
+                    sb.AppendLine(body);
+
+                }
+                else
+                {
+                    string body = string.Format("Data : {0} Prelievo : {1} saldo Attuale {2}", dateTime, operation, account.AssetFiat.FiatAmount -= operation);
+                    sb.AppendLine(body);
+                }
             }
                 File.AppendAllText(FilePath, sb.ToString());
         }

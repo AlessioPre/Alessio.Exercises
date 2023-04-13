@@ -42,10 +42,10 @@ namespace Alessio.Exercises4
         }
         #endregion
         #region Method
-        protected override Asset Buy(string name, int amount, FinancialIntermediary interme)
+        protected override Asset Buy(Stock name, int amount, FinancialIntermediary interme)
         {
         DateTime dateTime = DateTime.Now;
-            STOCK stockAsset = FindStockAsset(name);
+            STOCK stockAsset = FindStockAsset(name.ToString().ToLower());
             if (stockAsset is null) return null;
 
             if (CheckTime(dateTime))

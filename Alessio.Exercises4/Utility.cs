@@ -9,17 +9,34 @@ namespace Alessio.Exercises4
 {
     internal class Utility
     {
-        public static void GetAccountInfo(ConsoleColor consoleColor, CommercialBank bank, bool isDeposit, FiatTransferRequest data)
+        public static void GetAccountInfo(ConsoleColor consoleColor, CommercialBank bank, bool isDeposit,FiatTransferRequest data)
         {
-            int index = Array.IndexOf(bank.Accounts, data._accountTo);
-            Console.WriteLine($"Account Number: {bank.Accounts[index].Id}");
-            Console.WriteLine($"Account Client: {bank.Accounts[index].ClientAccount.Name}");
-            Console.ForegroundColor = consoleColor;
-            Console.WriteLine($"Amount {(isDeposit ? "Deposited" : "Withdrawn")}: {data._amount}");
-            Console.ResetColor();
-            // Console.WriteLine($"Account Balance: {bank.account.Balance}");
+            if (!isDeposit)
+            {
+                var account = Array.Find(bank.Accounts, account => account.Iban == data._accountfrom);
+                int index = Array.IndexOf(bank.Accounts, account);
+                Console.WriteLine($"Account Number: {bank.Accounts[index].Iban}");
+                Console.WriteLine($"Account Client: {bank.Accounts[index].ClientAccount.Name}");
+                Console.ForegroundColor = consoleColor;
+                Console.WriteLine($"Amount {(isDeposit ? "Deposited" : "Withdrawn")}: {data._amount}");
+                Console.ResetColor();
+                // Console.WriteLine($"Account Balance: {bank.account.Balance}");
 
-            Console.WriteLine("-------------------------------------");
+                Console.WriteLine("-------------------------------------");
+            }
+            else
+            {
+                var account = Array.Find(bank.Accounts, account => account.Iban == data._accountTo);
+                int index = Array.IndexOf(bank.Accounts, account);
+                Console.WriteLine($"Account Number: {bank.Accounts[index].Iban}");
+                Console.WriteLine($"Account Client: {bank.Accounts[index].ClientAccount.Name}");
+                Console.ForegroundColor = consoleColor;
+                Console.WriteLine($"Amount {(isDeposit ? "Deposited" : "Withdrawn")}: {data._amount}");
+                Console.ResetColor();
+                // Console.WriteLine($"Account Balance: {bank.account.Balance}");
+
+                Console.WriteLine("-------------------------------------");
+            }
         }
     }
 }
