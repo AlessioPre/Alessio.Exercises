@@ -58,13 +58,12 @@ namespace Alessio.Exersises7
         }
         public static List<T> OrderListAscended2<T>(List<T> data ,string typeobj)
         {
-            var datalist = data.GetType().GetField(typeobj).GetValue(data);
-
+          
             for (int i = 0; i < data.Count; i++)
             {
 
             }
-            return asclist;
+            return null;
         }
       
         public static List<T> OrderListDiscendent<T>(List<T> data,string name)
