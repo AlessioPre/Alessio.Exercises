@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Xml.Linq;
 
 
-namespace Alessio.Exersises7
+namespace Alessio.Exercises7
 {
     internal class Program
     {

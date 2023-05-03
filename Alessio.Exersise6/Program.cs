@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Alessio.Exersises6
+namespace Alessio.Exercises6
 {
     internal class Program
     {

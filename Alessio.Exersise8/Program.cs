@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http.Headers;
 
-namespace Alessio.Exersises8
+namespace Alessio.Exercises8
 {
     internal class Program
     {

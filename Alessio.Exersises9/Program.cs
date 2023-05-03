@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-namespace Alessio.Exersises9
+namespace Alessio.Exercises9
 {
     internal class Program
     {
